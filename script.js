@@ -2,7 +2,12 @@
 1. Napište funkci first, která jako svůj parametr přijme pole a vrátí první prvek tohoto pole. Pokud pole bude prázdné, funkce vrátí undefined. Funkci otestujte s několika různými poli. 
 */
 
-const first = (arr) => arr[0];
+const first = (arr) => {
+  if (arr.length === 0) {
+    return undefined;
+  }
+  return arr[0];
+};
 console.log(first([3, 2, 1]));
 console.log(first([]));
 
@@ -10,7 +15,13 @@ console.log(first([]));
 2. Napište funkci last, která jako svůj parametr přijme pole a vrátí poslední prvek tohoto pole. Pokud pole bude prázdné, funkce vrátí undefined. Funkci otestujte s několika různými poli. 
 */
 
-const last = (arr) => arr[arr.length - 1];
+const last = (arr) => {
+  const lastIndex = arr.length - 1;
+  if (arr.length === 0) {
+    return undefined;
+  }
+  return arr[lastIndex];
+};
 console.log(last([3, 2, 1]));
 console.log(last([]));
 
@@ -19,6 +30,11 @@ Napište funkci middle, která jako svůj parametr přijme pole a vrátí prvek 
 */
 
 const middle = (arr) => {
+  if (arr.length === 0) {
+    return undefined;
+  }
+
+  // kontrola, zda je počet prvků sudý; pokud ano, middleIndex bude vlevo od půlky, arr.length / 2 - 1; pokud máme lichý počet prvků, middleIndex bude (arr.length - 1) / 2
   const middleIndex =
     arr.length % 2 === 0 ? arr.length / 2 - 1 : (arr.length - 1) / 2;
 
@@ -36,8 +52,10 @@ const middleMean = (arr) => {
   if (arr.length === 0) {
     return undefined;
   } else if (arr.length % 2 === 0) {
+    // sudý počet -> vracíme průměr dvou prvků uprostřed
     return (arr[arr.length / 2 - 1] + arr[arr.length / 2]) / 2;
   } else {
+    // lichý počet
     return arr[(arr.length - 1) / 2];
   }
 };
